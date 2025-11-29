@@ -35,5 +35,10 @@
     "experiments": {
       "typedRoutes": true
     }
-  }
+  },
+  "router": {
+  "origin": "expo",
+  "src": "src"
+}
+
 }
