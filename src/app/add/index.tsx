@@ -1,7 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons"
-import { Text, TouchableOpacity, View } from "react-native"
-
 import { router } from "expo-router"
+import { useState } from "react"
+import { Text, TouchableOpacity, View } from "react-native"
 
 import { colors } from "@/styles/colors"
 import { styles } from "./styles"
@@ -11,6 +11,13 @@ import { Categories } from "@/components/categories"
 import { Input } from "@/components/input"
 
 export default function Add(){
+    const [name, setName] = useState("")
+    const [url, setUrl] = useState("")
+
+    function handleAdd(){
+        console.log({name, url})
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -25,10 +32,11 @@ export default function Add(){
             <Text style={styles.title}>Selecione uma categoria</Text>
             <Categories />
             <View style={styles.form}>
-            <Input placeholder="Nome"/>
-            <Input placeholder="Url"/>
-            <Button title="Adicionar"></Button>
+            <Input placeholder="Nome" onChangeText={setName} autoCorrect={false}/>
+            <Input placeholder="Url" onChangeText={setUrl} autoCorrect={false}/>
+            <Button title="Adicionar" onPress={handleAdd}></Button>
             </View>
+
         </View>
     )
 }
